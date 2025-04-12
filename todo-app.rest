@@ -6,8 +6,8 @@ POST http://localhost:5000/auth/register
 Content-Type: application/json
 
 {
-    "username":"aaa",
-    "password":"aaaaa"
+    "username":"test@email.com",
+    "password":"12345678"
 }
 
 ###
@@ -15,6 +15,32 @@ POST http://localhost:5000/auth/login
 Content-Type: application/json
 
 {
-    "username":"aaa",
-    "password":"aaaaa"
+    "username":"test@email.com",
+    "password":"12345678"
 }
+
+###Fetch todos from protected route
+GET http://localhost:5000/todos
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ0NDQ3NDg5LCJleHAiOjE3NDQ1MzM4ODl9.If8Y1IvGRnoSGjz-FiRZL4y5rMGyhj34CLUO4DuRzDQ
+
+### Create a new todo with a post request
+POST http://localhost:5000/todos
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ0NDQ3NDg5LCJleHAiOjE3NDQ1MzM4ODl9.If8Y1IvGRnoSGjz-FiRZL4y5rMGyhj34CLUO4DuRzDQ
+Content-Type: application/json
+
+{
+    "task": "Finish your projects"
+}
+
+### edit a protected todo put request to /todo/:id 
+PUT http://localhost:5000/todos/2
+Content-Type: application/json
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ0NDQ3NDg5LCJleHAiOjE3NDQ1MzM4ODl9.If8Y1IvGRnoSGjz-FiRZL4y5rMGyhj34CLUO4DuRzDQ
+
+{
+    "completed": 1
+}
+
+###delete a todo
+DELETE http://localhost:5000/todos
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ0NDQ3NDg5LCJleHAiOjE3NDQ1MzM4ODl9.If8Y1IvGRnoSGjz-FiRZL4y5rMGyhj34CLUO4DuRzDQ
